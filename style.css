@@ -1,0 +1,49 @@
+/* Smooth Scroll */
+html { scroll-behavior: smooth; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+/* Animations */
+@keyframes slow-zoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1.15); }
+}
+.animate-slow-zoom { animation: slow-zoom 20s infinite alternate ease-in-out; }
+
+/* Reveal Animations on Scroll */
+.reveal, .reveal-left, .reveal-right {
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+.reveal { transform: translateY(30px); }
+.reveal-left { transform: translateX(-50px); }
+.reveal-right { transform: translateX(50px); }
+
+.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Navbar Blur on Scroll */
+.navbar-scrolled {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer i {
+    transition: all 0.3s ease;
+}
+footer i:hover {
+    transform: scale(1.5);
+}
+
+
+#fire-bg {
+    mix-blend-mode: screen;
+    opacity: 0.6;
+    filter: blur(1px);
+}

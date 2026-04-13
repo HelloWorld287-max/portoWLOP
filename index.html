@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreaterPhoto Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons (cukup satu saja) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0A0A0A] text-white font-sans antialiased overflow-x-hidden">
+
+    <!-- --- NAVIGATION BAR --- -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center transition-all duration-300" id="navbar">
+        <div class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <span class="font-serif text-2xl font-bold tracking-tighter">WLOP</span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-12">
+            <a href="#about" class="text-sm uppercase tracking-[0.2em] font-medium hover:text-[#D4AF37] transition-colors relative group">About</a>
+            <a href="#gallery" class="text-sm uppercase tracking-[0.2em] font-medium hover:text-[#D4AF37] transition-colors relative group">Gallery</a>
+            <a href="#contact" class="text-sm uppercase tracking-[0.2em] font-medium hover:text-[#D4AF37] transition-colors relative group">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-white" id="menu-toggle">
+            <i data-lucide="menu"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="fixed inset-0 z-40 bg-[#0A0A0A] flex flex-col items-center justify-center gap-8 md:hidden translate-y-[-100%] transition-transform duration-500" id="mobile-menu">
+        <a href="#about" class="text-2xl font-serif hover:text-[#D4AF37] transition-colors" onclick="toggleMenu()">About</a>
+        <a href="#gallery" class="text-2xl font-serif hover:text-[#D4AF37] transition-colors" onclick="toggleMenu()">Gallery</a>
+        <a href="#contact" class="text-2xl font-serif hover:text-[#D4AF37] transition-colors" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- --- HERO SECTION --- -->
+    <section id="home" class="relative h-screen flex flex-col justify-center items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://wallpapercave.com/wp/wp2493853.jpg" 
+                 alt="Hero Background" 
+                 class="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-[#0A0A0A]/40"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-4xl reveal">
+            <span class="text-xs uppercase tracking-[0.5em] text-[#D4AF37] mb-6 block font-medium">— Art is freedom —</span>
+            <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 leading-tight">Digital artist <br> Illustrator</h1>
+            
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-12">
+                <div class="text-center">
+                    <p class="text-2xl font-serif font-bold">16 years</p>
+                    <p class="text-[10px] uppercase tracking-widest text-white/50">of experience</p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center animate-bounce">
+                <p class="text-xs uppercase tracking-[0.4em] text-white/60">Scroll Down</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- ABOUT SECTION --- -->
+    <section id="about" class="min-h-screen flex items-center py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal-left">
+                <span class="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-4 block">My Story</span>
+                <h2 class="text-5xl font-serif font-bold mb-8">Immortalizing the<br>Essence of Painting</h2>
+                <p class="text-white/60 leading-relaxed mb-8 text-lg">
+                    Saya adalah seorang digital artist yang dikenal dengan nama WLOP. Saya berfokus pada ilustrasi bergaya anime semi-realistis dengan pendekatan sinematik, di mana pencahayaan dan atmosfer menjadi elemen utama dalam setiap karya yang saya buat.
+                </p>
+                
+            </div>
+            <div class="relative aspect-square rounded-2xl overflow-hidden reveal-right">
+                <img src="https://wallpapercave.com/wp/wp4834542.jpg">
+            </div>
+        </div>
+    </section>
+
+    <!-- --- GALLERY SECTION --- -->
+    <section id="gallery" class="min-h-screen flex items-center py-32 bg-black/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-4 block">Portfolio</span>
+                <h2 class="text-5xl font-serif font-bold">Featured Works</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gallery-grid"></div>
+        </div>
+    </section>
+
+    <!-- --- CONTACT SECTION --- -->
+    <section id="contact" class="min-h-screen flex items-center py-32 px-6">
+        <div class="max-w-4xl mx-auto w-full">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-serif font-bold">Let's Work Together</h2>
+            </div>
+            <div class="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-white/10 reveal">
+                <form class="space-y-6" onsubmit="event.preventDefault()">
+                    <input type="text" placeholder="Full Name" class="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:outline-none focus:border-[#D4AF37]">
+                    <input type="email" placeholder="Email Address" class="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:outline-none focus:border-[#D4AF37]">
+                    <textarea rows="5" placeholder="Your Message" class="w-full bg-white/5 border border-white/10 rounded-xl py-4 px-6 focus:outline-none focus:border-[#D4AF37] resize-none"></textarea>
+                    <button class="w-full bg-[#D4AF37] text-[#0A0A0A] font-bold uppercase py-5 rounded-xl hover:bg-white transition-colors">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <canvas id="fire-bg" class="absolute inset-0 z-0 pointer-events-none"></canvas>
+    </section>
+
+    <!-- --- FOOTER --- -->
+    <footer class="py-20 border-t border-white/10 px-6 text-center">
+        <div class="flex justify-center gap-8 mb-8 text-white">
+            <i class="fa-brands fa-twitter"></i>
+<i class="fa-brands fa-instagram"></i>
+<i class="fa-brands fa-facebook"></i>
+<i class="fa-brands fa-github"></i>
+        </div>
+        <p class="text-xs text-white/40 uppercase tracking-widest">© 2024 GreaterArtwork. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+
+    <div id="image-popup" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50 p-4">
+    <div class="relative max-w-5xl w-full">
+
+        <!-- Image -->
+        <img id="popup-img" src="" class="w-full max-h-[80vh] object-contain rounded-xl">
+
+        <!-- Caption -->
+        <p id="popup-title" class="text-center mt-4 text-white/70 text-sm"></p>
+    </div>
+</div>
+</body>
+</html>
